@@ -1,0 +1,29 @@
+Mengapa hasil notation python lebih tinggi?
+Ringkasan singkat
+
+Perbedaan hasil eksperimen biasanya bukan karena Big-O (teori tetap sama: Linear Search → O(1)/O(n)/O(n)), melainkan karena faktor-faktor implementasi, mesin runtime, cara pengukuran, dan kondisi sistem.
+(In short: differences are due to runtime/implementation/measurement issues, not the Big-O theory.)
+
+tujuan warm-up adalah untuk 'memanaskan' mesin JavaScript agar hasil pengukuran kecepatan kode menjadi lebih akurat dan stabil.
+
+
+~~~~~~~~~~~
+Ringkasan akhir
+
+Alasan utama JavaScript lebih cepat: kombinasi V8 optimizations (JIT) + test terbaru memakai array angka primitif yang lebih mudah dioptimalkan.
+(Main reason: V8 JIT + simple numeric arrays.)
+
+Kode lama yang mencari JSON lambat karena objek, property lookup, callback/loop overhead, kemungkinan parsing JSON, dan GC — semua ini menambah waktu tiap langkah.
+(Old JSON-based code is slower due to object property lookups, callbacks, JSON parsing, and GC.)
+
+Untuk perbandingan adil atau mempercepat pencarian JSON, index data ke Map/dict, hindari parsing berulang, dan pakai loop sederhana + warm-up.
+(To be fair or faster: index data to map/dict, avoid repeated parsing, use simple loops and warm-up.)
+
+~~~~~~~~~~
+Analogi singkat (orang awam)
+
+Mencari di array angka sederhana itu seperti mencari kata di daftar nama tertulis rapi di satu kolom (cepat dibaca).
+(Searching a simple numeric list is like scanning a neat single-column list.)
+
+Mencari di 500 JSON itu seperti setiap nama ditempel di amplop berisi 5 kertas — kamu harus ambil amplop, buka, cari di dalam kertas, baru tahu. Lebih banyak langkah → lebih lama.
+(Searching JSON objects is like opening envelopes to check inside — many extra steps.)
